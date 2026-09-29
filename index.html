@@ -4,61 +4,81 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>저지곶자왈 사진 수첩</title>
-<meta name="description" content="저지곶자왈에서 스마트폰으로 사진 잘 찍는 요령. 숲에서 나오는 시간, 촬영 포인트 5곳, 16가지 기법, 현장 미션.">
+<meta name="description" content="저지곶자왈에서 스마트폰으로 사진 잘 찍는 요령. 숲에서 나오는 시간, 촬영 포인트 5곳, 16가지 기법, 현장 미션, 사진 보내기.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="저지곶자왈 사진 수첩">
-<meta property="og:description" content="저지곶자왈에서 스마트폰으로 사진 잘 찍는 요령. 숲에서 나오는 시간, 촬영 포인트 5곳, 16가지 기법, 현장 미션.">
+<meta property="og:description" content="저지곶자왈에서 스마트폰으로 사진 잘 찍는 요령. 숲에서 나오는 시간, 촬영 포인트, 16가지 기법, 현장 미션.">
 <meta property="og:image" content="img/hero.jpg">
 <meta name="theme-color" content="#3E6B4A">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233E6B4A'/%3E%3Crect x='14' y='22' width='36' height='26' rx='6' fill='none' stroke='%23EDF0E8' stroke-width='4'/%3E%3Ccircle cx='32' cy='35' r='7' fill='%23F2B84B'/%3E%3Crect x='24' y='16' width='14' height='7' rx='2' fill='%23EDF0E8'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<script src="config.js"></script>
 <style>
-/* 레이아웃: 숲에서 한 손으로 넘겨 보는 현장 수첩 — 좁은 읽기 단, 사진은 단 폭 가득, 기법은 번호 붙은 카드 */
+/* 레이아웃: 현장 수첩 — 휴대폰에선 한 단, 컴퓨터에선 넓은 판(최대 76rem)에 섹션별 다단 배치 + 상단 고정 목차 */
 :root{
-  --paper:#EDF0E8; --panel:#E2E8DC; --ink:#18261D; --ink-soft:#4B5C50; --moss:#3E6B4A; --dusk:#C8861C; --dusk-soft:#F3DDB2; --line:#C6D0C1; --basalt:#2A332D;
+  --paper:#EDF0E8; --panel:#E2E8DC; --ink:#18261D; --ink-soft:#4B5C50; --moss:#3E6B4A; --dusk:#C8861C; --dusk-soft:#F3DDB2; --line:#C6D0C1; --basalt:#2A332D; --danger:#B8472F; --ok:#2F7A4A;
   --display:"Nanum Myeongjo","AppleMyungjo","Noto Serif KR",serif;
   --body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
-  --step--1:.86rem; --step0:1rem; --step1:1.2rem; --step2:1.55rem; --step3:2.1rem; --step4:clamp(2.2rem,7vw,3.6rem);
+  --step--1:.86rem; --step0:1rem; --step1:1.2rem; --step2:1.55rem; --step3:clamp(1.7rem,3.2vw,2.3rem); --step4:clamp(2.3rem,6vw,4.2rem);
+  --maxw:76rem; --gutter:clamp(16px,4vw,40px);
+  color-scheme:light;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --paper:#101812; --panel:#18231B; --ink:#E6ECE2; --ink-soft:#A5B3A7; --moss:#8CC49A; --dusk:#F2B84B; --dusk-soft:#3A2E17; --line:#2B3A2F; --basalt:#0B110D; color-scheme:dark}}
-:root[data-theme="dark"]{--paper:#101812; --panel:#18231B; --ink:#E6ECE2; --ink-soft:#A5B3A7; --moss:#8CC49A; --dusk:#F2B84B; --dusk-soft:#3A2E17; --line:#2B3A2F; --basalt:#0B110D; color-scheme:dark}
+  --paper:#101812; --panel:#18231B; --ink:#E6ECE2; --ink-soft:#A5B3A7; --moss:#8CC49A; --dusk:#F2B84B; --dusk-soft:#3A2E17; --line:#2B3A2F; --basalt:#0B110D; --danger:#FF8E6E; --ok:#8CC49A; color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#101812; --panel:#18231B; --ink:#E6ECE2; --ink-soft:#A5B3A7; --moss:#8CC49A; --dusk:#F2B84B; --dusk-soft:#3A2E17; --line:#2B3A2F; --basalt:#0B110D; --danger:#FF8E6E; --ok:#8CC49A; color-scheme:dark}
 
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:4.5rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:var(--step0);line-height:1.7;margin:0}
 img{max-width:100%}
 [hidden]{display:none!important}
-.wrap{padding-top:env(safe-area-inset-top,0px)}
-body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:var(--step0);line-height:1.7;margin:0}
-.wrap{max-width:46rem;margin:0 auto;padding-inline:clamp(16px,4vw,32px);padding-block:0 4rem}
-h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.25;letter-spacing:-.01em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter);padding-block:0 4rem}
+h1,h2,h3,h4{text-wrap:balance;margin:0;line-height:1.25}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.01em}
 h2{font-size:var(--step3)}
 h3{font-size:var(--step1)}
 p{margin:0}
 .eyebrow{font-family:var(--mono);font-size:var(--step--1);letter-spacing:.12em;text-transform:uppercase;color:var(--moss)}
-section{display:grid;gap:1.1rem;padding-block:2.6rem;border-top:1px solid var(--line)}
-section:first-of-type{border-top:0}
-.lede{color:var(--ink-soft);max-width:36em}
+section{display:grid;gap:1.2rem;padding-block:clamp(2.4rem,5vw,4rem);border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:.6rem;max-width:44rem}
+.lede{color:var(--ink-soft);max-width:40em}
 figure{margin:0}
 .photo{border-radius:14px;overflow:hidden;background:var(--panel)}
 .photo img{display:block;width:100%;height:100%;object-fit:cover}
-figcaption{font-size:var(--step--1);color:var(--ink-soft);margin-top:.45rem}
 a{color:var(--moss)}
 :focus-visible{outline:3px solid var(--dusk);outline-offset:2px;border-radius:4px}
 
+/* 상단 목차 */
+.topnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topnav .in{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter);display:flex;align-items:center;gap:1rem;height:3.4rem}
+.topnav .brand{font-family:var(--display);font-weight:800;white-space:nowrap;text-decoration:none;color:var(--ink)}
+.topnav nav{display:flex;gap:.2rem;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1}
+.topnav nav::-webkit-scrollbar{display:none}
+.topnav nav a{white-space:nowrap;text-decoration:none;color:var(--ink-soft);font-size:.9rem;padding:.35rem .65rem;border-radius:999px}
+.topnav nav a:hover{background:var(--panel);color:var(--ink)}
+.topnav .cta{white-space:nowrap;text-decoration:none;background:var(--moss);color:var(--paper);font-weight:700;font-size:.9rem;padding:.4rem .9rem;border-radius:999px}
+@media (max-width:720px){.topnav .brand{display:none}}
+
 /* 히어로 */
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:1.6rem;align-items:end;padding-block:3rem 2rem}
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(1.4rem,4vw,3.5rem);align-items:center;padding-block:clamp(2rem,5vw,4.5rem)}
 .hero h1{font-size:var(--step4);font-weight:800}
-.hero .sub{margin-top:1rem;color:var(--ink-soft)}
+.hero .sub{margin-top:1.1rem;color:var(--ink-soft);max-width:34em;font-size:1.05rem}
 .hero .meta{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.5rem}
 .tag{font-size:var(--step--1);padding:.2rem .7rem;border-radius:999px;border:1px solid var(--line);color:var(--ink-soft)}
-.hero .photo{aspect-ratio:3/4;max-width:100%}
-@media (max-width:640px){.hero{grid-template-columns:1fr}.hero .photo{aspect-ratio:4/3}}
+.hero .photo{aspect-ratio:3/4;max-height:78vh;justify-self:end;width:100%}
+.hero .go{display:inline-flex;margin-top:1.6rem;gap:.6rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.4rem;font:inherit;font-weight:700;text-decoration:none;border-radius:12px;padding:.7rem 1.1rem;border:1.5px solid var(--moss);color:var(--moss);background:transparent;cursor:pointer}
+.btn.primary{background:var(--moss);color:var(--paper)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+@media (max-width:760px){.hero{grid-template-columns:1fr}.hero .photo{aspect-ratio:4/3;justify-self:stretch}}
 
-/* 오늘의 빛 */
+/* 숲에서 나오는 시간 */
+.light-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(1rem,3vw,2rem);align-items:start}
+@media (max-width:900px){.light-grid{grid-template-columns:1fr}}
 .light{background:var(--basalt);color:#EAF0E6;border-radius:18px;padding:clamp(1.1rem,3vw,1.8rem);display:grid;gap:1rem}
 .light .row{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;justify-content:space-between}
 .light label{font-size:var(--step--1);color:#AFC0B2}
@@ -67,54 +87,52 @@ a{color:var(--moss)}
 .t{background:#1C2620;border-radius:12px;padding:.7rem .8rem;min-width:0}
 .t b{display:block;font-family:var(--mono);font-size:var(--step2);font-variant-numeric:tabular-nums;color:#fff}
 .t span{font-size:var(--step--1);color:#AFC0B2}
-.t.gold b{color:#F2B84B}
-@media (max-width:560px){.times{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.bar{position:relative;height:38px;border-radius:10px;background:linear-gradient(90deg,#0E1611 0%,#1F2D24 22%,#3E5A45 50%,#1F2D24 78%,#0E1611 100%);overflow:hidden}
-.bar .g{position:absolute;top:0;bottom:0;background:rgba(242,184,75,.85)}
-.bar .now{position:absolute;top:-2px;bottom:-2px;width:2px;background:#fff}
-.ticks{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.72rem;color:#8FA094}
-.light .note{font-size:var(--step--1);color:#AFC0B2}
 .t.safe b{color:#9FD8AE;font-size:var(--step1)}
 .t.exit{outline:2px solid #FF8E6E}
 .t.exit b{color:#FFB29A}
+@media (max-width:560px){.times{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.bar{position:relative;height:38px;border-radius:10px;background:linear-gradient(90deg,#0E1611 0%,#1F2D24 22%,#3E5A45 50%,#1F2D24 78%,#0E1611 100%);overflow:hidden}
 .bar .safe{position:absolute;top:0;bottom:0;background:rgba(140,196,154,.55)}
-.bar .g{height:40%;top:auto}
+.bar .g{position:absolute;bottom:0;height:40%;background:rgba(242,184,75,.85)}
 .bar .exit{position:absolute;top:-2px;bottom:-2px;width:4px;background:#FF8E6E}
+.bar .now{position:absolute;top:-2px;bottom:-2px;width:2px;background:#fff}
+.ticks{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.72rem;color:#8FA094}
 .legend{display:flex;flex-wrap:wrap;gap:.3rem 1rem;margin-top:.4rem;font-size:.76rem;color:#AFC0B2}
 .legend i{display:inline-block;width:.8rem;height:.6rem;border-radius:2px;margin-right:.35rem;vertical-align:middle}
 .k-safe{background:rgba(140,196,154,.8)}.k-gold{background:rgba(242,184,75,.9)}.k-exit{background:#FF8E6E}
+.light .note{font-size:var(--step--1);color:#AFC0B2}
 .golden{display:grid;gap:.6rem;background:var(--panel);border-radius:14px;padding:1rem 1.1rem}
 .golden p{color:var(--ink-soft)}
 
 /* 체크리스트 */
-.check{display:grid;gap:.6rem}
-.check label{display:flex;gap:.8rem;align-items:flex-start;background:var(--panel);border-radius:12px;padding:.85rem 1rem;cursor:pointer}
+.check{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:.7rem}
+.check label{display:flex;gap:.8rem;align-items:flex-start;background:var(--panel);border-radius:12px;padding:.95rem 1rem;cursor:pointer}
 .check input{width:1.25rem;height:1.25rem;margin-top:.2rem;accent-color:var(--moss);flex:none}
 .check strong{display:block}
 .check span{color:var(--ink-soft);font-size:var(--step--1)}
 
-/* 포인트 */
-.spots{display:grid;gap:2rem}
-.spot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:1.2rem;align-items:start}
+/* 촬영 포인트 */
+.spots{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,21rem),1fr));gap:clamp(1rem,2.5vw,1.8rem)}
+.spot{display:grid;gap:.9rem;align-content:start;min-width:0}
 .spot .photo{aspect-ratio:4/3}
-.spot:nth-child(even){grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
-.spot:nth-child(even) figure{order:2}
 .spot .body{display:grid;gap:.5rem;min-width:0}
 .spot ul{margin:0;padding-left:1.1rem}
 .spot li{margin:.15rem 0}
 .uses{display:flex;flex-wrap:wrap;gap:.35rem}
 .uses a{font-family:var(--mono);font-size:.74rem;text-decoration:none;padding:.1rem .5rem;border-radius:6px;background:var(--dusk-soft);color:var(--ink)}
-@media (max-width:640px){.spot,.spot:nth-child(even){grid-template-columns:1fr}.spot:nth-child(even) figure{order:0}}
+@media (min-width:1100px){.spots .spot:first-child{grid-column:span 2;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:center}}
 
-/* 기법 카드 */
-.chapter{display:grid;gap:.8rem}
-.chapter h3{display:flex;gap:.6rem;align-items:baseline}
-.chapter h3 small{font-family:var(--mono);font-size:var(--step--1);color:var(--moss);font-weight:500}
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
-@media (max-width:620px){.cards{grid-template-columns:1fr}}
-.card{background:var(--panel);border-radius:14px;padding:1rem 1.05rem;display:grid;grid-template-columns:auto minmax(0,1fr);gap:.2rem .8rem;scroll-margin-top:1rem}
+/* 기법 */
+.chapters{display:grid;gap:2rem}
+.chapter{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:1rem 2rem;align-items:start}
+.chapter .ch-title{position:sticky;top:4.5rem;display:grid;gap:.3rem}
+.chapter .ch-title small{font-family:var(--mono);font-size:var(--step--1);color:var(--moss)}
+.chapter .ch-title p{color:var(--ink-soft);font-size:.92rem}
+@media (max-width:900px){.chapter{grid-template-columns:1fr}.chapter .ch-title{position:static}}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,17rem),1fr));gap:.7rem}
+.card{background:var(--panel);border-radius:14px;padding:1rem 1.05rem;display:grid;grid-template-columns:auto minmax(0,1fr);gap:.2rem .8rem;align-content:start;scroll-margin-top:5rem}
 .card .n{grid-row:span 2;font-family:var(--mono);font-size:var(--step--1);color:var(--dusk);padding-top:.15rem;font-variant-numeric:tabular-nums}
-.card h4{margin:0;font-size:var(--step0);font-weight:700}
+.card h4{font-size:var(--step0);font-weight:700}
 .card p{color:var(--ink-soft);font-size:.94rem}
 .card:target{outline:2px solid var(--dusk)}
 .card svg{grid-column:2;width:100%;max-width:220px;height:auto;margin-top:.4rem}
@@ -123,68 +141,119 @@ a{color:var(--moss)}
 .card svg .a{stroke:var(--dusk);fill:none;stroke-width:3}
 .card svg .af{fill:var(--dusk)}
 .card svg .m{stroke:var(--line);stroke-width:1.5;fill:none}
+.band{aspect-ratio:21/9;border-radius:14px}
+@media (max-width:700px){.band{aspect-ratio:4/3}}
 
 /* 미션 */
-.missions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:.7rem}
+.missions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12.5rem),1fr));gap:.7rem}
 .mission{border:1.5px dashed var(--moss);border-radius:14px;padding:1rem;display:grid;gap:.35rem;align-content:start}
 .mission label{display:flex;gap:.5rem;align-items:center;font-weight:700;cursor:pointer}
 .mission input{width:1.1rem;height:1.1rem;accent-color:var(--dusk)}
 .mission p{color:var(--ink-soft);font-size:.92rem}
 .progress{font-family:var(--mono);font-size:var(--step--1);color:var(--moss)}
 
+/* 사진 보내기 */
+.upload{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1rem,3vw,2rem);align-items:start}
+@media (max-width:900px){.upload{grid-template-columns:1fr}}
+.fields{display:grid;gap:.9rem}
+.field{display:grid;gap:.3rem}
+.field label{font-weight:700;font-size:.95rem}
+.field label .req{color:var(--danger);margin-left:.2rem}
+.field input[type=text],.field input[type=tel],.field input[type=email],.field textarea{font:inherit;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:10px;padding:.65rem .8rem;width:100%}
+.field textarea{min-height:5.5rem;resize:vertical}
+.field .hint{font-size:var(--step--1);color:var(--ink-soft)}
+.field .err{font-size:var(--step--1);color:var(--danger)}
+.panelbox{background:var(--panel);border-radius:16px;padding:clamp(1rem,2.5vw,1.4rem);display:grid;gap:1rem}
+.drop{border:2px dashed var(--moss);border-radius:14px;padding:1.4rem;text-align:center;display:grid;gap:.4rem;justify-items:center;cursor:pointer;background:var(--paper)}
+.drop.over{background:var(--dusk-soft)}
+.drop b{font-size:1.05rem}
+.drop span{font-size:var(--step--1);color:var(--ink-soft)}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(6.5rem,1fr));gap:.5rem}
+.thumb{position:relative;border-radius:10px;overflow:hidden;background:var(--paper);aspect-ratio:1;display:grid;place-items:center;font-size:.72rem;color:var(--ink-soft);text-align:center;padding:.3rem}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.thumb .x{position:absolute;top:.25rem;right:.25rem;width:1.6rem;height:1.6rem;border-radius:50%;border:0;background:rgba(0,0,0,.65);color:#fff;font-size:1rem;line-height:1;cursor:pointer}
+.thumb .st{position:absolute;left:0;right:0;bottom:0;padding:.2rem .3rem;font-size:.7rem;background:rgba(0,0,0,.6);color:#fff}
+.thumb .st.ok{background:rgba(47,122,74,.9)}
+.thumb .st.bad{background:rgba(184,71,47,.92)}
+.consent{display:grid;gap:.6rem}
+.consent label{display:flex;gap:.6rem;align-items:flex-start;font-size:.92rem}
+.consent input{width:1.15rem;height:1.15rem;margin-top:.25rem;accent-color:var(--moss);flex:none}
+details.terms{font-size:var(--step--1);color:var(--ink-soft);background:var(--paper);border-radius:10px;padding:.6rem .8rem}
+details.terms summary{cursor:pointer;color:var(--ink)}
+details.terms table{border-collapse:collapse;margin-top:.5rem;width:100%}
+details.terms th,details.terms td{text-align:left;vertical-align:top;padding:.3rem .4rem;border-top:1px solid var(--line)}
+details.terms th{white-space:nowrap;color:var(--ink);font-weight:500}
+.status{font-size:.95rem;border-radius:10px;padding:.7rem .9rem;background:var(--paper)}
+.status.ok{color:var(--ok);border:1.5px solid var(--ok)}
+.status.bad{color:var(--danger);border:1.5px solid var(--danger)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
 /* 예절 */
-.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:.5rem 1.2rem;margin:0;padding:0;list-style:none}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:.6rem 1.6rem;margin:0;padding:0;list-style:none}
 .rules li{padding-left:1.1rem;position:relative}
 .rules li::before{content:"";position:absolute;left:0;top:.72em;width:.45rem;height:.45rem;border-radius:50%;background:var(--moss)}
 
-footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft);font-size:var(--step--1);display:grid;gap:.3rem}
-@media (prefers-reduced-motion:no-preference){.card,.check label{transition:background .2s}}
+footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft);font-size:var(--step--1);display:flex;flex-wrap:wrap;gap:.3rem 2rem}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="hero">
+<header class="topnav">
+  <div class="in">
+    <a class="brand" href="#top">저지곶자왈 사진 수첩</a>
+    <nav aria-label="섹션">
+      <a href="#light">나오는 시간</a><a href="#ready">1분 준비</a><a href="#spots">촬영 포인트</a><a href="#tips">16가지 기법</a><a href="#mission">미션</a><a href="#rules">숲 예절</a>
+    </nav>
+    <a class="cta" href="#send">사진 보내기</a>
+  </div>
+</header>
+
+<div class="wrap" id="top">
+  <div class="hero">
     <div>
       <p class="eyebrow">저지리 생태관광마을 · 빛이 숲을 떠나는 시간</p>
       <h1>저지곶자왈<br>사진 수첩</h1>
       <p class="sub">스마트폰 하나로 곶자왈을 잘 담는 방법. 최경진 작가의 강의와 2026년 9월 28일 현장 실습에서 나온 요령을 숲에서 바로 펼쳐 볼 수 있게 정리했습니다.</p>
       <div class="meta"><span class="tag">제주시 한경면 저지리</span><span class="tag">스마트폰 촬영</span><span class="tag">기법 16가지</span></div>
+      <div class="go"><a class="btn primary" href="#tips">기법 보기</a><a class="btn" href="#send">내 사진 보내기</a></div>
     </div>
     <figure class="photo"><img src="img/hero.jpg" alt="곶자왈 작은 동굴 입구를 액자처럼 두고 앉은 사람을 찍은 사진" loading="eager"></figure>
-  </header>
+  </div>
 
   <section id="light" aria-labelledby="light-h">
-    <p class="eyebrow">오늘의 해</p>
-    <h2 id="light-h">숲에서 나오는 시간</h2>
-    <p class="lede">곶자왈은 해가 지기 전부터 숲 안이 빠르게 어두워지고, 길이 서로 비슷해 보여 방향을 잃기 쉽습니다. 숲 탐방은 해가 완전히 뜬 뒤에 시작하고, <strong>해가 떠 있을 때 반드시 숲을 나오세요.</strong> 아래 '숲에서 나오기'는 일몰 1시간 전입니다.</p>
-    <div class="light">
-      <div class="row">
-        <div><label for="d">날짜</label><br><input id="d" type="date"></div>
-        <p class="note" id="where">저지곶자왈 (북위 33.33°, 동경 126.26°) 기준</p>
+    <div class="light-grid">
+      <div class="sec-head" style="gap:1rem">
+        <p class="eyebrow">오늘의 해</p>
+        <h2 id="light-h">숲에서 나오는 시간</h2>
+        <p class="lede">곶자왈은 해가 지기 전부터 숲 안이 빠르게 어두워지고, 길이 서로 비슷해 보여 방향을 잃기 쉽습니다. 숲 탐방은 해가 완전히 뜬 뒤에 시작하고, <strong>해가 떠 있을 때 반드시 숲을 나오세요.</strong> 계산기의 '숲에서 나오기'는 일몰 1시간 전입니다.</p>
+        <div class="golden">
+          <h3>골든타임은 숲 밖에서</h3>
+          <p>사진이 가장 예쁘게 나오는 골든타임은 해 뜨고 지기 전후 30분입니다. 이 시간은 숲 입구 주차장, 마을 돌담길, 오름처럼 <b>트인 곳</b>에서 쓰세요. <span id="gt"></span></p>
+          <p>곶자왈 안에서는 한낮이 오히려 좋습니다. 머리 위 나무 그늘이 강한 햇빛을 걸러 주기 때문에, 강의에서 말한 "한낮에는 그늘·숲에서"가 그대로 들어맞아요. 빛이 부족하면 화이트밸런스(16번)나 밝기 조절(12번)을 쓰세요.</p>
+        </div>
       </div>
-      <div class="times">
-        <div class="t"><span>일출</span><b id="sr">--:--</b></div>
-        <div class="t safe"><span>숲 탐방 권장</span><b id="win">--:--</b></div>
-        <div class="t exit"><span>숲에서 나오기</span><b id="ex">--:--</b></div>
-        <div class="t"><span>일몰</span><b id="ss">--:--</b></div>
+      <div class="light">
+        <div class="row">
+          <div><label for="d">날짜</label><br><input id="d" type="date"></div>
+          <p class="note">저지곶자왈 (북위 33.33°, 동경 126.26°) 기준</p>
+        </div>
+        <div class="times">
+          <div class="t"><span>일출</span><b id="sr">--:--</b></div>
+          <div class="t safe"><span>숲 탐방 권장</span><b id="win">--:--</b></div>
+          <div class="t exit"><span>숲에서 나오기</span><b id="ex">--:--</b></div>
+          <div class="t"><span>일몰</span><b id="ss">--:--</b></div>
+        </div>
+        <div>
+          <div class="bar" id="bar" role="img" aria-label="숲 탐방 권장 시간"></div>
+          <div class="ticks"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div>
+          <div class="legend"><span><i class="k-safe"></i>숲 탐방 권장</span><span><i class="k-gold"></i>골든타임 (숲 밖에서)</span><span><i class="k-exit"></i>숲에서 나오기</span></div>
+        </div>
+        <p class="note">흐리거나 비 오는 날은 숲이 더 일찍 어두워지니 더 일찍 나오세요. 계산은 약식 천문 공식이라 1~2분 차이가 날 수 있습니다.</p>
       </div>
-      <div>
-        <div class="bar" id="bar" role="img" aria-label="숲 탐방 권장 시간"></div>
-        <div class="ticks"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div>
-        <div class="legend"><span><i class="k-safe"></i>숲 탐방 권장</span><span><i class="k-gold"></i>골든타임 (숲 밖에서)</span><span><i class="k-exit"></i>숲에서 나오기</span></div>
-      </div>
-      <p class="note">흐리거나 비 오는 날은 숲이 더 일찍 어두워지니 더 일찍 나오세요. 계산은 약식 천문 공식이라 1~2분 차이가 날 수 있습니다.</p>
-    </div>
-    <div class="golden">
-      <h3>골든타임은 숲 밖에서</h3>
-      <p>사진이 가장 예쁘게 나오는 골든타임은 해 뜨고 지기 전후 30분입니다. 이 시간은 숲 입구 주차장, 마을 돌담길, 오름처럼 <b>트인 곳</b>에서 쓰세요. <span id="gt"></span></p>
-      <p>곶자왈 안에서는 한낮이 오히려 좋습니다. 머리 위 나무 그늘이 강한 햇빛을 걸러 주기 때문에, 강의에서 말한 "한낮에는 그늘·숲에서"가 그대로 들어맞아요. 빛이 부족하게 느껴지면 화이트밸런스(16번)나 밝기 조절(12번)로 따뜻하고 밝게 만들 수 있습니다.</p>
     </div>
   </section>
 
-  <section aria-labelledby="ready-h">
-    <p class="eyebrow">숲에 들어가기 전</p>
-    <h2 id="ready-h">1분 준비</h2>
+  <section id="ready" aria-labelledby="ready-h">
+    <div class="sec-head"><p class="eyebrow">숲에 들어가기 전</p><h2 id="ready-h">1분 준비</h2></div>
     <div class="check">
       <label for="c1"><input type="checkbox" id="c1" data-k="c1"><div><strong>렌즈 닦기</strong><span>지문 하나로 사진 전체가 뿌옇게 됩니다. 부드러운 천이나 안경닦이로. 통화하고 나서도 한 번 더.</span></div></label>
       <label for="c2"><input type="checkbox" id="c2" data-k="c2"><div><strong>비율 4:3</strong><span>16:9는 더 넓은 게 아니라 4:3의 위아래를 자른 것입니다. 카메라 상단 비율 버튼에서 바꿔요.</span></div></label>
@@ -193,13 +262,12 @@ footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft)
     </div>
   </section>
 
-  <section aria-labelledby="spots-h">
-    <p class="eyebrow">곶자왈 촬영 포인트</p>
-    <h2 id="spots-h">이 장소에선 이렇게</h2>
-    <p class="lede">실습 날 걸었던 숲길에서 만나는 다섯 가지 장면입니다. 사진은 모두 참가자들이 그날 스마트폰으로 찍은 것이에요.</p>
+  <section id="spots" aria-labelledby="spots-h">
+    <div class="sec-head"><p class="eyebrow">곶자왈 촬영 포인트</p><h2 id="spots-h">이 장소에선 이렇게</h2>
+      <p class="lede">실습 날 걸었던 숲길에서 만나는 다섯 가지 장면입니다. 사진은 모두 참가자들이 그날 스마트폰으로 찍은 것이에요.</p></div>
     <div class="spots">
       <article class="spot">
-        <figure class="photo"><img src="img/path.jpg" alt="양옆으로 나무가 늘어선 곶자왈 숲길 가운데에 작게 서 있는 사람" loading="lazy"></figure>
+        <figure class="photo"><img src="img/path.jpg" alt="양옆으로 나무가 늘어선 곶자왈 숲길 끝 풀밭에 작게 서 있는 사람" loading="lazy"></figure>
         <div class="body">
           <h3>나무 터널 숲길</h3>
           <ul><li>양옆 나무를 액자로 두고, 사람은 길 <b>가운데 아래</b>에 작게.</li><li>가까이서 몇 장만 찍고, 뒤로 물러나며 여러 장.</li><li>뒷모습이나 옆을 보는 자세가 오래 보는 사진이 됩니다.</li></ul>
@@ -241,63 +309,59 @@ footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft)
     </div>
   </section>
 
-  <section aria-labelledby="tips-h">
-    <p class="eyebrow">강의 요약</p>
-    <h2 id="tips-h">16가지 기법</h2>
-    <p class="lede">강의 순서 그대로 네 장으로 묶었습니다. 위 촬영 포인트의 태그를 누르면 해당 카드로 이동해요.</p>
-
-    <div class="chapter">
-      <h3><small>1장</small>촬영 전 준비와 자세</h3>
-      <div class="cards">
-        <article class="card" id="tip01"><span class="n">01</span><h4>렌즈부터 닦기</h4><p>촬영 전, 촬영 중, 통화 후에도. 작은 화면에선 몰라도 큰 화면에선 뿌옇게 보여요.</p></article>
-        <article class="card" id="tip02"><span class="n">02</span><h4>두 손으로 잡기</h4><p>왼손 엄지·검지, 오른손 검지·새끼손가락으로 받치고 오른손 엄지로 셔터. 세로 사진은 손을 모아 삼각대처럼.</p></article>
-        <article class="card" id="tip03"><span class="n">03</span><h4>눈높이 맞추기</h4><p>카메라·눈·대상을 일직선으로. 앉은 사람은 앉아서, 아이는 아이 눈높이로. 1.5~2.5m 거리가 왜곡이 적어요.</p>
-          <svg viewBox="0 0 220 80" aria-hidden="true"><line class="m" x1="5" y1="74" x2="215" y2="74"/><circle class="f" cx="40" cy="22" r="7"/><rect class="f" x="33" y="31" width="14" height="42" rx="5"/><circle class="f" cx="175" cy="22" r="7"/><rect class="f" x="168" y="31" width="14" height="42" rx="5"/><rect class="af" x="52" y="17" width="10" height="12" rx="2"/><line class="a" x1="62" y1="23" x2="165" y2="23"/></svg></article>
-        <article class="card" id="tip04"><span class="n">04</span><h4>4:3 비율</h4><p>16:9는 위아래가 잘린 화면입니다. 4:3으로 찍고 필요하면 나중에 자르기.</p>
-          <svg viewBox="0 0 220 110" aria-hidden="true"><rect class="s" x="30" y="5" width="160" height="100" rx="4"/><rect class="af" x="30" y="5" width="160" height="10" opacity=".45"/><rect class="af" x="30" y="95" width="160" height="10" opacity=".45"/><text x="110" y="60" text-anchor="middle" class="f" font-size="13" font-family="IBM Plex Mono,monospace">4:3</text></svg></article>
-        <article class="card" id="tip05"><span class="n">05</span><h4>격자선으로 수평</h4><p>눈대중으로 안 보이는 미세한 기울기를 선에 맞춰 잡아요. 가운데 수평계가 있는 폰은 선이 하나로 겹칠 때가 정확한 수평.</p></article>
+  <section id="tips" aria-labelledby="tips-h">
+    <div class="sec-head"><p class="eyebrow">강의 요약</p><h2 id="tips-h">16가지 기법</h2>
+      <p class="lede">강의 순서 그대로 네 장으로 묶었습니다. 촬영 포인트의 태그를 누르면 해당 카드로 이동해요.</p></div>
+    <div class="chapters">
+      <div class="chapter">
+        <div class="ch-title"><small>1장</small><h3>촬영 전 준비와 자세</h3><p>깨끗한 렌즈, 안정된 자세에서 시작합니다.</p></div>
+        <div class="cards">
+          <article class="card" id="tip01"><span class="n">01</span><h4>렌즈부터 닦기</h4><p>촬영 전, 촬영 중, 통화 후에도. 작은 화면에선 몰라도 큰 화면에선 뿌옇게 보여요.</p></article>
+          <article class="card" id="tip02"><span class="n">02</span><h4>두 손으로 잡기</h4><p>왼손 엄지·검지, 오른손 검지·새끼손가락으로 받치고 오른손 엄지로 셔터. 세로 사진은 손을 모아 삼각대처럼.</p></article>
+          <article class="card" id="tip03"><span class="n">03</span><h4>눈높이 맞추기</h4><p>카메라·눈·대상을 일직선으로. 앉은 사람은 앉아서, 아이는 아이 눈높이로. 1.5~2.5m 거리가 왜곡이 적어요.</p>
+            <svg viewBox="0 0 220 80" aria-hidden="true"><line class="m" x1="5" y1="74" x2="215" y2="74"/><circle class="f" cx="40" cy="22" r="7"/><rect class="f" x="33" y="31" width="14" height="42" rx="5"/><circle class="f" cx="175" cy="22" r="7"/><rect class="f" x="168" y="31" width="14" height="42" rx="5"/><rect class="af" x="52" y="17" width="10" height="12" rx="2"/><line class="a" x1="62" y1="23" x2="165" y2="23"/></svg></article>
+          <article class="card" id="tip04"><span class="n">04</span><h4>4:3 비율</h4><p>16:9는 위아래가 잘린 화면입니다. 4:3으로 찍고 필요하면 나중에 자르기.</p>
+            <svg viewBox="0 0 220 110" aria-hidden="true"><rect class="s" x="30" y="5" width="160" height="100" rx="4"/><rect class="af" x="30" y="5" width="160" height="10" opacity=".45"/><rect class="af" x="30" y="95" width="160" height="10" opacity=".45"/><text x="110" y="60" text-anchor="middle" class="f" font-size="13" font-family="IBM Plex Mono,monospace">4:3</text></svg></article>
+          <article class="card" id="tip05"><span class="n">05</span><h4>격자선으로 수평</h4><p>눈대중으로 안 보이는 미세한 기울기를 선에 맞춰 잡아요. 가운데 수평계가 있는 폰은 선이 하나로 겹칠 때가 정확한 수평.</p></article>
+        </div>
       </div>
-    </div>
-
-    <div class="chapter">
-      <h3><small>2장</small>구도와 인물 배치</h3>
-      <div class="cards">
-        <article class="card" id="tip06"><span class="n">06</span><h4>1/3 : 2/3 나누기</h4><p>수평선(돌담, 숲 경계)을 가로선 하나에 맞추고, 더 보여주고 싶은 쪽을 2/3로.</p>
-          <svg viewBox="0 0 220 110" aria-hidden="true"><rect class="s" x="30" y="5" width="160" height="100" rx="4"/><rect class="af" x="30" y="38" width="160" height="67" opacity=".3"/><line class="a" x1="30" y1="38" x2="190" y2="38"/><line class="m" x1="30" y1="72" x2="190" y2="72"/><line class="m" x1="83" y1="5" x2="83" y2="105"/><line class="m" x1="137" y1="5" x2="137" y2="105"/></svg></article>
-        <article class="card" id="tip07"><span class="n">07</span><h4>선과 선이 만나는 곳</h4><p>주제를 가운데 대신 교차점 네 곳 중 하나에. 네 곳 모두 넣어 보고 가장 편안한 곳을 고르세요.</p>
-          <svg viewBox="0 0 220 110" aria-hidden="true"><rect class="s" x="30" y="5" width="160" height="100" rx="4"/><line class="m" x1="83" y1="5" x2="83" y2="105"/><line class="m" x1="137" y1="5" x2="137" y2="105"/><line class="m" x1="30" y1="38" x2="190" y2="38"/><line class="m" x1="30" y1="72" x2="190" y2="72"/><circle class="a" cx="83" cy="38" r="6"/><circle class="a" cx="137" cy="38" r="6"/><circle class="a" cx="83" cy="72" r="6"/><circle class="af" cx="137" cy="72" r="7"/></svg></article>
-        <article class="card" id="tip08"><span class="n">08</span><h4>얼굴은 5번, 발끝은 8번</h4><p>스마트폰 렌즈는 가운데가 작게, 가장자리가 크게 나와요. 얼굴을 가운데 칸(5번)에, 발끝을 아래 가운데 칸(8번)에 두면 키가 커 보입니다. 누워서 찍을 필요 없어요.</p>
-          <svg viewBox="0 0 220 130" aria-hidden="true"><rect class="s" x="70" y="3" width="80" height="124" rx="4"/><line class="m" x1="96.7" y1="3" x2="96.7" y2="127"/><line class="m" x1="123.3" y1="3" x2="123.3" y2="127"/><line class="m" x1="70" y1="44.3" x2="150" y2="44.3"/><line class="m" x1="70" y1="85.7" x2="150" y2="85.7"/><rect class="af" x="97" y="44.5" width="26" height="41" opacity=".28"/><rect class="af" x="97" y="86" width="26" height="41" opacity=".28"/><circle class="f" cx="110" cy="56" r="6"/><rect class="f" x="104" y="64" width="12" height="30" rx="4"/><rect class="f" x="104" y="92" width="5" height="32" rx="2"/><rect class="f" x="111" y="92" width="5" height="32" rx="2"/></svg></article>
-        <article class="card" id="tip09"><span class="n">09</span><h4>관절에서 자르지 않기</h4><p>팔꿈치·손목·무릎·발목에 화면 끝이 걸리지 않게. 꼭 잘라야 하면 허벅지에서. 바닷가·숲 경계선이 목을 가로지르지 않게도.</p></article>
+      <div class="chapter">
+        <div class="ch-title"><small>2장</small><h3>구도와 인물 배치</h3><p>격자선 하나로 달라지는 사진.</p></div>
+        <div class="cards">
+          <article class="card" id="tip06"><span class="n">06</span><h4>1/3 : 2/3 나누기</h4><p>수평선(돌담, 숲 경계)을 가로선 하나에 맞추고, 더 보여주고 싶은 쪽을 2/3로.</p>
+            <svg viewBox="0 0 220 110" aria-hidden="true"><rect class="s" x="30" y="5" width="160" height="100" rx="4"/><rect class="af" x="30" y="38" width="160" height="67" opacity=".3"/><line class="a" x1="30" y1="38" x2="190" y2="38"/><line class="m" x1="30" y1="72" x2="190" y2="72"/><line class="m" x1="83" y1="5" x2="83" y2="105"/><line class="m" x1="137" y1="5" x2="137" y2="105"/></svg></article>
+          <article class="card" id="tip07"><span class="n">07</span><h4>선과 선이 만나는 곳</h4><p>주제를 가운데 대신 교차점 네 곳 중 하나에. 네 곳 모두 넣어 보고 가장 편안한 곳을 고르세요.</p>
+            <svg viewBox="0 0 220 110" aria-hidden="true"><rect class="s" x="30" y="5" width="160" height="100" rx="4"/><line class="m" x1="83" y1="5" x2="83" y2="105"/><line class="m" x1="137" y1="5" x2="137" y2="105"/><line class="m" x1="30" y1="38" x2="190" y2="38"/><line class="m" x1="30" y1="72" x2="190" y2="72"/><circle class="a" cx="83" cy="38" r="6"/><circle class="a" cx="137" cy="38" r="6"/><circle class="a" cx="83" cy="72" r="6"/><circle class="af" cx="137" cy="72" r="7"/></svg></article>
+          <article class="card" id="tip08"><span class="n">08</span><h4>얼굴은 5번, 발끝은 8번</h4><p>스마트폰 렌즈는 가운데가 작게, 가장자리가 크게 나와요. 얼굴을 가운데 칸(5번)에, 발끝을 아래 가운데 칸(8번)에 두면 키가 커 보입니다.</p>
+            <svg viewBox="0 0 220 130" aria-hidden="true"><rect class="s" x="70" y="3" width="80" height="124" rx="4"/><line class="m" x1="96.7" y1="3" x2="96.7" y2="127"/><line class="m" x1="123.3" y1="3" x2="123.3" y2="127"/><line class="m" x1="70" y1="44.3" x2="150" y2="44.3"/><line class="m" x1="70" y1="85.7" x2="150" y2="85.7"/><rect class="af" x="97" y="44.5" width="26" height="41" opacity=".28"/><rect class="af" x="97" y="86" width="26" height="41" opacity=".28"/><circle class="f" cx="110" cy="56" r="6"/><rect class="f" x="104" y="64" width="12" height="30" rx="4"/><rect class="f" x="104" y="92" width="5" height="32" rx="2"/><rect class="f" x="111" y="92" width="5" height="32" rx="2"/></svg></article>
+          <article class="card" id="tip09"><span class="n">09</span><h4>관절에서 자르지 않기</h4><p>팔꿈치·손목·무릎·발목에 화면 끝이 걸리지 않게. 꼭 잘라야 하면 허벅지에서. 숲 경계선이 목을 가로지르지 않게도.</p></article>
+        </div>
       </div>
-    </div>
-
-    <div class="chapter">
-      <h3><small>3장</small>초점과 배경 흐림</h3>
-      <div class="cards">
-        <article class="card" id="tip10"><span class="n">10</span><h4>눈동자에 터치 초점</h4><p>사람·동물은 눈동자, 꽃은 가운데 꽃술을 손가락으로 살짝 눌러요. 폰은 가까운 것(코, 앞의 꽃)에 초점을 잡기 쉽습니다.</p></article>
-        <article class="card" id="tip11"><span class="n">11</span><h4>앞은 흐리게, 액자처럼</h4><p>인물 모드나 일반 모드에서 앞의 잎·나무·동굴 너머 사람을 터치. 앞은 뿌옇게, 사람은 또렷하게 됩니다. 흐림 강도는 인물 모드의 효과 강도로 조절.</p></article>
-        <article class="card" id="tip12"><span class="n">12</span><h4>터치 후 밝기 조절</h4><p>얼굴을 누르면 초점과 함께 밝기 막대가 나와요. 위로 올리면 밝게, 내리면 실루엣.</p></article>
+      <div class="chapter">
+        <div class="ch-title"><small>3장</small><h3>초점과 배경 흐림</h3><p>찍고 싶은 곳을 직접 터치하세요.</p></div>
+        <div class="cards">
+          <article class="card" id="tip10"><span class="n">10</span><h4>눈동자에 터치 초점</h4><p>사람·동물은 눈동자, 꽃은 가운데 꽃술을 손가락으로 살짝 눌러요. 폰은 가까운 것(코, 앞의 꽃)에 초점을 잡기 쉽습니다.</p></article>
+          <article class="card" id="tip11"><span class="n">11</span><h4>앞은 흐리게, 액자처럼</h4><p>인물 모드나 일반 모드에서 앞의 잎·나무·동굴 너머 사람을 터치. 앞은 뿌옇게, 사람은 또렷하게 됩니다. 흐림 강도는 인물 모드의 효과 강도로 조절.</p></article>
+          <article class="card" id="tip12"><span class="n">12</span><h4>터치 후 밝기 조절</h4><p>얼굴을 누르면 초점과 함께 밝기 막대가 나와요. 위로 올리면 밝게, 내리면 실루엣.</p></article>
+        </div>
       </div>
-    </div>
-
-    <div class="chapter">
-      <h3><small>4장</small>풍경과 빛 활용</h3>
-      <div class="cards">
-        <article class="card" id="tip13"><span class="n">13</span><h4>근경 · 중경 · 원경</h4><p>가까운 돌이나 풀(근경), 중간의 사람이나 길(중경), 먼 숲(원경)을 한 장에. 시선이 가까운 곳부터 깊어집니다.</p></article>
-        <article class="card" id="tip14"><span class="n">14</span><h4>사람은 작게, 배경은 크게</h4><p>가까운 인물 사진은 몇 장으로 끝내고, 뒤로 물러나며 찍으세요. "나도 저기 가고 싶다"는 사진이 오래 남아요.</p></article>
-        <article class="card" id="tip15"><span class="n">15</span><h4>골든타임</h4><p>해 뜨기·해 지기 전후 30분. 빛이 옆에서 들어와 머리카락이 빛나고 색이 따뜻해집니다. 곶자왈 안이 아니라 숲 입구·마을·오름처럼 트인 곳에서 쓰고, 숲 안에서는 한낮의 나무 그늘을 활용하세요.</p></article>
-        <article class="card" id="tip16"><span class="n">16</span><h4>화이트밸런스 올리기</h4><p>흐린 날엔 프로(전문가) 모드 → WB 숫자를 올리면 따뜻한 골든타임 색이 납니다. 내리면 푸르고 차갑게.</p></article>
+      <div class="chapter">
+        <div class="ch-title"><small>4장</small><h3>풍경과 빛 활용</h3><p>사람은 작게, 배경은 크게.</p></div>
+        <div class="cards">
+          <article class="card" id="tip13"><span class="n">13</span><h4>근경 · 중경 · 원경</h4><p>가까운 돌이나 풀(근경), 중간의 사람이나 길(중경), 먼 숲(원경)을 한 장에. 시선이 가까운 곳부터 깊어집니다.</p></article>
+          <article class="card" id="tip14"><span class="n">14</span><h4>사람은 작게, 배경은 크게</h4><p>가까운 인물 사진은 몇 장으로 끝내고, 뒤로 물러나며 찍으세요. "나도 저기 가고 싶다"는 사진이 오래 남아요.</p></article>
+          <article class="card" id="tip15"><span class="n">15</span><h4>골든타임</h4><p>해 뜨기·해 지기 전후 30분. 빛이 옆에서 들어와 색이 따뜻해집니다. 곶자왈 안이 아니라 숲 입구·마을·오름처럼 트인 곳에서 쓰고, 숲 안에서는 한낮의 나무 그늘을 활용하세요.</p></article>
+          <article class="card" id="tip16"><span class="n">16</span><h4>화이트밸런스 올리기</h4><p>흐린 날엔 프로(전문가) 모드 → WB 숫자를 올리면 따뜻한 색이 납니다. 내리면 푸르고 차갑게.</p></article>
+        </div>
       </div>
     </div>
   </section>
 
-  <figure class="photo" style="aspect-ratio:16/10"><img src="img/small.jpg" alt="어둑한 숲길 끝에 작게 선 주황색 옷의 사람을 낮은 각도에서 찍은 사진" loading="lazy"></figure>
+  <figure class="photo band"><img src="img/small.jpg" alt="숲길 끝에 작게 선 주황색 옷의 사람을 낮은 각도에서 찍은 사진" loading="lazy"></figure>
 
-  <section aria-labelledby="mission-h">
-    <p class="eyebrow">현장 미션</p>
-    <h2 id="mission-h">오늘 한 장씩</h2>
-    <p class="lede">잘 찍는 기술보다 곶자왈을 나만의 시선으로 담는 게 목표입니다. 다섯 개 중 몇 개나 모을 수 있을까요? <span class="progress" id="mp">0 / 5</span></p>
+  <section id="mission" aria-labelledby="mission-h">
+    <div class="sec-head"><p class="eyebrow">현장 미션</p><h2 id="mission-h">오늘 한 장씩</h2>
+      <p class="lede">잘 찍는 기술보다 곶자왈을 나만의 시선으로 담는 게 목표입니다. 다섯 개 중 몇 개나 모을 수 있을까요? <span class="progress" id="mp">0 / 5</span></p></div>
     <div class="missions">
       <div class="mission"><label for="m1"><input type="checkbox" id="m1" data-k="m1">사물의 표정 찾기</label><p>나무껍질, 돌 구멍, 덩굴에서 얼굴이나 동물 모양을 찾아 찍기.</p></div>
       <div class="mission"><label for="m2"><input type="checkbox" id="m2" data-k="m2">빛 한 줄기</label><p>나뭇잎 사이로 비스듬히 들어오는 햇빛이 닿은 한 부분만.</p></div>
@@ -307,15 +371,50 @@ footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft)
     </div>
   </section>
 
-  <section aria-labelledby="rule-h">
-    <p class="eyebrow">숲 예절</p>
-    <h2 id="rule-h">곶자왈을 지키면서 찍기</h2>
+  <section id="send" aria-labelledby="send-h">
+    <div class="sec-head"><p class="eyebrow">사진 보내기</p><h2 id="send-h">곶자왈에서 찍은 사진을 보내 주세요</h2>
+      <p class="lede">미션 사진, 마음에 드는 한 장, 모두 좋아요. 보내 주신 사진은 저지리 생태관광마을 사진 보관함에 모이고, 좋은 사진은 연락드린 뒤 마을 소개에 쓰일 수 있습니다.</p></div>
+    <form id="up" class="upload" novalidate>
+      <div class="fields">
+        <div class="field"><label for="f-name">이름<span class="req" aria-hidden="true">*</span></label><input type="text" id="f-name" name="name" autocomplete="name" maxlength="40" required><span class="err" id="e-name" hidden></span></div>
+        <div class="field"><label for="f-phone">연락처<span class="req" aria-hidden="true">*</span></label><input type="tel" id="f-phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="010-0000-0000" maxlength="20" required><span class="err" id="e-phone" hidden></span></div>
+        <div class="field"><label for="f-email">이메일<span class="req" aria-hidden="true">*</span></label><input type="email" id="f-email" name="email" autocomplete="email" placeholder="name@example.com" maxlength="120" required><span class="err" id="e-email" hidden></span></div>
+        <div class="field"><label for="f-note">사진 이야기 <span class="hint">(선택)</span></label><textarea id="f-note" name="note" maxlength="500" placeholder="어디서, 어떤 기법으로 찍었는지 적어 주세요. 예: 작은 동굴 입구, 액자 프레임"></textarea></div>
+        <div class="hp" aria-hidden="true"><label for="f-web">웹사이트</label><input type="text" id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
+      </div>
+      <div class="panelbox">
+        <div class="drop" id="drop" role="button" tabindex="0" aria-describedby="drop-hint">
+          <b>사진 고르기</b>
+          <span id="drop-hint">누르거나 여기로 끌어다 놓으세요 · 한 번에 최대 10장 · 장당 20MB까지 · JPG, PNG, HEIC</span>
+          <input type="file" id="f-files" accept="image/*,.heic,.heif" multiple hidden>
+        </div>
+        <div class="thumbs" id="thumbs" aria-live="polite"></div>
+        <div class="consent">
+          <label for="f-agree"><input type="checkbox" id="f-agree" required><span><b>(필수)</b> 개인정보 수집·이용에 동의합니다.</span></label>
+          <details class="terms"><summary>수집 내용 보기</summary>
+            <table>
+              <tr><th>수집 항목</th><td>이름, 연락처, 이메일, 보내 주신 사진과 사진 이야기</td></tr>
+              <tr><th>이용 목적</th><td>사진 접수 확인, 사진 사용에 관한 연락</td></tr>
+              <tr><th>보유 기간</th><td>접수일로부터 1년. 요청하시면 바로 삭제합니다.</td></tr>
+              <tr><th>거부 권리</th><td>동의하지 않을 수 있으며, 이 경우 사진을 보낼 수 없습니다.</td></tr>
+            </table>
+          </details>
+          <label for="f-promo"><input type="checkbox" id="f-promo"><span><b>(선택)</b> 보낸 사진을 저지리 생태관광마을 홍보(웹페이지, SNS, 영상)에 쓰는 것에 동의합니다. 사진 속 다른 사람에게도 동의를 받았습니다.</span></label>
+        </div>
+        <button class="btn primary" type="submit" id="send-btn">사진 보내기</button>
+        <div class="status" id="status" role="status" hidden></div>
+      </div>
+    </form>
+  </section>
+
+  <section id="rules" aria-labelledby="rule-h">
+    <div class="sec-head"><p class="eyebrow">숲 예절</p><h2 id="rule-h">곶자왈을 지키면서 찍기</h2></div>
     <ul class="rules">
+      <li><b>해가 떠 있을 때 숲을 나오기.</b> 일몰 1시간 전에는 숲 출구에</li>
       <li>처음 가는 숲은 혼자 들어가지 않고, 안내인이나 일행과 함께</li>
       <li>좋은 자리를 찾더라도 정해진 길 밖으로 들어가지 않기</li>
       <li>이끼 덮인 돌과 양치식물은 밟거나 떼어내지 않기</li>
       <li>동굴 안은 천장이 낮고 바닥이 미끄러워요. 천천히</li>
-      <li><b>해가 떠 있을 때 숲을 나오기.</b> 일몰 1시간 전에는 숲 출구에</li>
       <li>다른 사람의 얼굴이 크게 나온 사진은 공유하기 전에 물어보기</li>
       <li>노루나 새를 만나면 소리 내지 말고 멀리서 줌으로</li>
     </ul>
@@ -330,7 +429,7 @@ footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft)
 
 <script>
 (function(){
-  // 체크 상태는 이 브라우저에만 저장
+  // ---- 체크 상태(이 브라우저에만 저장) ----
   const K='jeoji-photo-notes';
   let st={}; try{st=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
   const save=()=>{try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}};
@@ -340,7 +439,7 @@ footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft)
   boxes.forEach(b=>{b.checked=!!st[b.dataset.k];b.addEventListener('change',()=>{st[b.dataset.k]=b.checked;save();upd()})});
   upd();
 
-  // NOAA 약식 태양 계산 (저지곶자왈)
+  // ---- 해 계산 (NOAA 약식, 저지곶자왈) ----
   const LAT=33.33, LON=126.26, TZ=9;
   const rad=d=>d*Math.PI/180, deg=r=>r*180/Math.PI;
   function sun(date){
@@ -349,7 +448,7 @@ footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft)
     const JDN=d+Math.floor((153*mm+2)/5)+365*yy+Math.floor(yy/4)-Math.floor(yy/100)+Math.floor(yy/400)-32045;
     const out={};
     for(const [key,sign] of [['rise',-1],['set',1]]){
-      let t=12-TZ; // UTC 정오 근처에서 반복 보정
+      let t=12-TZ;
       for(let i=0;i<3;i++){
         const JD=JDN-0.5+t/24, T=(JD-2451545)/36525;
         const L0=(280.46646+T*(36000.76983+T*0.0003032))%360;
@@ -363,10 +462,9 @@ footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft)
         const yv=Math.tan(rad(eps/2))**2;
         const eqt=4*deg(yv*Math.sin(2*rad(L0))-2*e*Math.sin(rad(M))+4*e*yv*Math.sin(rad(M))*Math.cos(2*rad(L0))-0.5*yv*yv*Math.sin(4*rad(L0))-1.25*e*e*Math.sin(2*rad(M)));
         const ha=deg(Math.acos(Math.cos(rad(90.833))/(Math.cos(rad(LAT))*Math.cos(rad(decl)))-Math.tan(rad(LAT))*Math.tan(rad(decl))));
-        const minUTC=720-4*(LON-sign*ha)-eqt;
-        t=minUTC/60;
+        t=(720-4*(LON-sign*ha)-eqt)/60;
       }
-      out[key]=t+TZ; // 현지 시각(시간 단위)
+      out[key]=t+TZ;
     }
     return out;
   }
@@ -391,6 +489,87 @@ footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft)
     bar.setAttribute('aria-label','숲 탐방 권장 '+hm(w0)+'부터 '+hm(ex)+'까지, '+hm(ex)+' 전에 숲에서 나오기');
   }
   inp.addEventListener('change',draw); draw();
+
+  // ---- 사진 보내기 ----
+  const URL_=(window.JEOJI_UPLOAD_URL||'').trim();
+  const MAXN=10, MAXB=20*1024*1024;
+  const form=document.getElementById('up'), drop=document.getElementById('drop'), fin=document.getElementById('f-files');
+  const thumbs=document.getElementById('thumbs'), status=document.getElementById('status'), btn=document.getElementById('send-btn');
+  let files=[]; let busy=false;
+  const okType=f=>/^image\//.test(f.type)||/\.(heic|heif|jpe?g|png|webp)$/i.test(f.name);
+  const kb=b=>b>1048576?(b/1048576).toFixed(1)+'MB':Math.round(b/1024)+'KB';
+  function say(msg,cls){status.hidden=false;status.className='status'+(cls?' '+cls:'');status.textContent=msg}
+  function render(){
+    thumbs.innerHTML='';
+    files.forEach((it,i)=>{
+      const d=document.createElement('div'); d.className='thumb';
+      if(/^image\/(jpeg|png|webp|gif)$/.test(it.f.type)){const im=document.createElement('img');im.alt='';im.src=it.url||(it.url=URL.createObjectURL(it.f));d.appendChild(im)}
+      else d.textContent=it.f.name;
+      if(!busy){const x=document.createElement('button');x.type='button';x.className='x';x.setAttribute('aria-label',it.f.name+' 빼기');x.textContent='×';x.onclick=()=>{if(it.url)URL.revokeObjectURL(it.url);files.splice(i,1);render()};d.appendChild(x)}
+      const s=document.createElement('span'); s.className='st'+(it.state==='ok'?' ok':it.state==='bad'?' bad':'');
+      s.textContent=it.state==='ok'?'보냄':it.state==='bad'?'실패':it.state==='up'?'보내는 중…':kb(it.f.size); d.appendChild(s);
+      thumbs.appendChild(d);
+    });
+  }
+  function addFiles(list){
+    const rej=[];
+    for(const f of list){
+      if(files.length>=MAXN){rej.push(f.name+' (최대 '+MAXN+'장)');continue}
+      if(!okType(f)){rej.push(f.name+' (사진 파일이 아님)');continue}
+      if(f.size>MAXB){rej.push(f.name+' ('+kb(f.size)+', 20MB 초과)');continue}
+      if(files.some(x=>x.f.name===f.name&&x.f.size===f.size))continue;
+      files.push({f,state:''});
+    }
+    render();
+    if(rej.length) say('추가하지 못한 파일: '+rej.join(', '),'bad'); else if(!status.classList.contains('ok')) status.hidden=true;
+  }
+  drop.addEventListener('click',()=>{if(!busy)fin.click()});
+  drop.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!busy){e.preventDefault();fin.click()}});
+  fin.addEventListener('change',()=>{addFiles([...fin.files]);fin.value=''});
+  ['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over')}));
+  ['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('over')}));
+  drop.addEventListener('drop',e=>{if(!busy&&e.dataTransfer)addFiles([...e.dataTransfer.files])});
+
+  const $=id=>document.getElementById(id);
+  function err(id,msg){const e=$('e-'+id);e.hidden=!msg;e.textContent=msg||'';$('f-'+id).setAttribute('aria-invalid',msg?'true':'false')}
+  function validate(){
+    const name=$('f-name').value.trim(), phone=$('f-phone').value.trim(), email=$('f-email').value.trim();
+    let ok=true;
+    err('name',name?'':'이름을 적어 주세요.'); if(!name)ok=false;
+    const digits=phone.replace(/\D/g,'');
+    const pOk=/^0\d{8,10}$/.test(digits); err('phone',pOk?'':'연락처를 숫자로 적어 주세요. 예: 010-1234-5678'); if(!pOk)ok=false;
+    const eOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); err('email',eOk?'':'이메일 주소를 확인해 주세요.'); if(!eOk)ok=false;
+    return ok;
+  }
+  const readB64=f=>new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=()=>rej(r.error);r.readAsDataURL(f)});
+
+  if(!URL_){btn.disabled=true;say('사진 받는 곳을 준비 중입니다. 잠시 후 다시 들러 주세요.')}
+
+  form.addEventListener('submit',async e=>{
+    e.preventDefault(); if(busy||!URL_) return;
+    if(!validate()){say('빨간 글씨로 표시된 칸을 확인해 주세요.','bad');return}
+    if(!files.length){say('보낼 사진을 한 장 이상 골라 주세요.','bad');return}
+    if(!$('f-agree').checked){say('개인정보 수집·이용에 동의해야 사진을 보낼 수 있어요.','bad');return}
+    busy=true; btn.disabled=true; render();
+    const batch=Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+    const base={name:$('f-name').value.trim(),phone:$('f-phone').value.trim(),email:$('f-email').value.trim(),note:$('f-note').value.trim(),promo:$('f-promo').checked,agree:true,website:$('f-web').value,batch,total:files.length};
+    let ok=0, bad=0;
+    for(let i=0;i<files.length;i++){
+      const it=files[i]; if(it.state==='ok'){ok++;continue}
+      it.state='up'; render(); say((i+1)+' / '+files.length+'장 보내는 중…');
+      try{
+        const data=await readB64(it.f);
+        const r=await fetch(URL_,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({...base,index:i,filename:it.f.name,mime:it.f.type||'',size:it.f.size,data})});
+        const j=await r.json();
+        if(!j.ok) throw new Error(j.error||'실패');
+        it.state='ok'; ok++;
+      }catch(x){it.state='bad'; bad++; console.warn(x)}
+      render();
+    }
+    busy=false; btn.disabled=false; render();
+    if(bad===0){say(ok+'장을 보냈어요. 고맙습니다! 확인 후 적어 주신 연락처로 연락드릴게요.','ok');files.forEach(x=>x.url&&URL.revokeObjectURL(x.url));files=[];render()}
+    else say(ok+'장은 보냈고 '+bad+'장은 보내지 못했어요. 인터넷 연결을 확인하고 [사진 보내기]를 다시 누르면 실패한 사진만 다시 보냅니다.','bad');
+  });
 })();
 </script>
 </body>
