@@ -8,7 +8,7 @@
 - **숲에서 나오는 시간**: 날짜를 고르면 저지곶자왈 좌표(북위 33.33°, 동경 126.26°) 기준 일출·일몰, 숲 탐방 권장 시간, 숲에서 나올 시각(일몰 1시간 전), 골든타임을 계산합니다.
 - **영상 보고 따라하기**: 맨 위에 「스마트폰 촬영 기법 16가지 한 번에 정리」(https://youtu.be/ZgtNicKeuCM)가 바로 재생됩니다. 16개 기법 카드의 ▶ 버튼을 누르면 영상이 그 기법 부분부터 재생됩니다.
 - **1분 준비**, **촬영 포인트 5곳**, **16가지 기법**, **현장 미션 5개**, **숲 예절**
-- 페이지 맨 아래에 ① 실내 강의(https://youtu.be/FtWH1kZvKD4), ② 현장 실습(https://youtu.be/PdRsoFzoW-8) 링크
+- 페이지 맨 아래에 썸네일과 함께 ① 실내 강의(https://youtu.be/FtWH1kZvKD4), ② 현장 실습(https://youtu.be/PdRsoFzoW-8) 링크
 - **사진 보내기**: 방문자가 이름·연락처·이메일과 함께 사진을 보내면 Google Drive 폴더에 모입니다.
 
 > 곶자왈은 해가 지기 전부터 숲 안이 빠르게 어두워집니다. 숲 탐방은 해가 완전히 뜬 뒤 시작하고, 해가 떠 있을 때 반드시 숲을 나오세요.
@@ -20,7 +20,7 @@
 ```
 index.html              페이지 전체 (CSS·JS 포함, 외부 의존성은 Google Fonts만)
 config.js               사진 받는 주소(Apps Script 웹 앱 URL) 설정
-img/                    페이지에 쓰인 사진 7장 (참가자 스마트폰 촬영)
+img/                    페이지에 쓰인 사진 7장(참가자 스마트폰 촬영) + 하단 영상 썸네일 2장(video01, video02)
 apps-script/Code.gs     사진 받는 창구 (Google Apps Script) — 저장소에는 참고용, 실제로는 Google에 설치
 apps-script/appsscript.json   위 스크립트의 설정(권한·웹 앱)
 .nojekyll               GitHub Pages가 파일을 가공하지 않게 하는 빈 파일
