@@ -221,7 +221,7 @@ footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft)
   <div class="in">
     <a class="brand" href="#top">저지곶자왈 사진 수첩</a>
     <nav aria-label="섹션">
-      <a href="#watch">영상</a><a href="#light">나오는 시간</a><a href="#ready">1분 준비</a><a href="#spots">촬영 포인트</a><a href="#tips">16가지 기법</a><a href="#mission">미션</a><a href="#rules">숲 예절</a>
+      <a href="#watch">영상</a><a href="#walk">숲 미리 보기</a><a href="#light">나오는 시간</a><a href="#ready">1분 준비</a><a href="#spots">촬영 포인트</a><a href="#tips">16가지 기법</a><a href="#mission">미션</a><a href="#rules">숲 예절</a>
     </nav>
     <a class="cta" href="#send">사진 보내기</a>
   </div>
@@ -234,7 +234,7 @@ footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft)
       <h1>저지곶자왈<br>사진 수첩</h1>
       <p class="sub">스마트폰 하나로 곶자왈을 잘 담는 방법. 최경진 작가의 강의와 2026년 9월 28일 현장 실습에서 나온 요령을 숲에서 바로 펼쳐 볼 수 있게 정리했습니다.</p>
       <div class="meta"><span class="tag">제주시 한경면 저지리</span><span class="tag">스마트폰 촬영</span><span class="tag">기법 16가지</span></div>
-      <div class="go"><a class="btn primary" href="#watch">영상 보기</a><a class="btn" href="#tips">기법 보기</a><a class="btn" href="#send">내 사진 보내기</a></div>
+      <div class="go"><a class="btn primary" href="#watch">영상 보기</a><a class="btn" href="#walk">숲 미리 보기</a><a class="btn" href="#tips">기법 보기</a><a class="btn" href="#send">내 사진 보내기</a></div>
     </div>
     <figure class="photo"><img src="img/hero.jpg" alt="곶자왈 작은 동굴 입구를 액자처럼 두고 앉은 사람을 찍은 사진" loading="eager"></figure>
   </div>
@@ -252,6 +252,25 @@ footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft)
           <li><button type="button" class="seek chap" data-t="238"><span class="tm">3:58</span><span><b>3장</b> 초점과 배경 흐림</span></button></li>
           <li><button type="button" class="seek chap" data-t="301"><span class="tm">5:01</span><span><b>4장</b> 풍경과 빛 활용</span></button></li>
           <li><button type="button" class="seek chap" data-t="373"><span class="tm">6:13</span><span><b>마무리</b> 곶자왈에서 찍은 사진</span></button></li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section id="walk" aria-labelledby="walk-h">
+    <div class="sec-head"><p class="eyebrow">오늘 걷는 숲 미리 보기</p><h2 id="walk-h">다섯 지점에서 만나는 저지곶자왈</h2>
+      <p class="lede">잣담에서 콩짜개군락·종가시나무까지, 오늘 걸을 숲길을 2분 33초에 담았습니다. 지점 이름을 누르면 그 장면부터 재생돼요.</p></div>
+    <div class="watch-grid">
+      <div class="vwrap"><iframe id="yt2" src="https://www.youtube-nocookie.com/embed/RS9GA7t2GTo?enablejsapi=1&amp;rel=0&amp;playsinline=1" title="저지곶자왈 「빛이 숲을 떠나는 시간」 다섯 지점 미리 보기" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <nav class="chapters-list" aria-label="미리 보기 영상 지점 바로가기">
+        <ol>
+          <li><button type="button" class="seek chap" data-p="yt2" data-t="0"><span class="tm">0:00</span><span><b>처음부터</b> 저지곶자왈</span></button></li>
+          <li><button type="button" class="seek chap" data-p="yt2" data-t="25"><span class="tm">0:25</span><span><b>STOP 1</b> 잣담</span></button></li>
+          <li><button type="button" class="seek chap" data-p="yt2" data-t="39"><span class="tm">0:39</span><span><b>STOP 2</b> 낙엽길</span></button></li>
+          <li><button type="button" class="seek chap" data-p="yt2" data-t="54"><span class="tm">0:54</span><span><b>STOP 3</b> 볏바른궤</span></button></li>
+          <li><button type="button" class="seek chap" data-p="yt2" data-t="70"><span class="tm">1:10</span><span><b>STOP 4</b> 숨골과 자연교량</span></button></li>
+          <li><button type="button" class="seek chap" data-p="yt2" data-t="82"><span class="tm">1:22</span><span><b>STOP 5</b> 콩짜개군락 · 종가시나무</span></button></li>
+          <li><button type="button" class="seek chap" data-p="yt2" data-t="127"><span class="tm">2:07</span><span><b>준비</b> 스마트폰으로 관찰을 남기는 법</span></button></li>
         </ol>
       </nav>
     </div>
@@ -536,15 +555,20 @@ footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft)
   }
   inp.addEventListener('change',draw); draw();
 
-  // ---- 영상 구간 재생 ----
-  const yt=document.getElementById('yt'); let ytReady=false;
-  yt.addEventListener('load',()=>{ytReady=true;try{yt.contentWindow.postMessage(JSON.stringify({event:'listening',id:'yt'}),'*')}catch(e){}});
-  const cmd=(func,args)=>yt.contentWindow.postMessage(JSON.stringify({event:'command',func,args:args||[]}),'*');
+  // ---- 영상 구간 재생 (16가지 기법 yt, 숲 미리 보기 yt2) ----
+  const players={};
+  for(const id of ['yt','yt2']){
+    const el=document.getElementById(id); if(!el) continue;
+    const p=players[id]={el,ready:false,sec:el.closest('section')};
+    el.addEventListener('load',()=>{p.ready=true;try{el.contentWindow.postMessage(JSON.stringify({event:'listening',id}),'*')}catch(e){}});
+  }
+  const cmd=(p,func,args)=>p.el.contentWindow.postMessage(JSON.stringify({event:'command',func,args:args||[]}),'*');
   document.querySelectorAll('.seek').forEach(b=>b.addEventListener('click',()=>{
+    const p=players[b.dataset.p||'yt']; if(!p) return;
     const t=Number(b.dataset.t)||0;
-    if(ytReady){cmd('seekTo',[t,true]);cmd('playVideo')}
-    else{yt.src=yt.src.split('?')[0]+'?enablejsapi=1&rel=0&playsinline=1&autoplay=1&start='+t}
-    const r=yt.getBoundingClientRect(); if(r.top<60||r.bottom>innerHeight) document.getElementById('watch').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+    if(p.ready){cmd(p,'seekTo',[t,true]);cmd(p,'playVideo')}
+    else{p.el.src=p.el.src.split('?')[0]+'?enablejsapi=1&rel=0&playsinline=1&autoplay=1&start='+t}
+    const r=p.el.getBoundingClientRect(); if(r.top<60||r.bottom>innerHeight) p.sec.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
   }));
 
   // ---- 사진 보내기 ----
