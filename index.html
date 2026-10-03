@@ -73,6 +73,9 @@ a{color:var(--moss)}
 .hero .go{display:inline-flex;margin-top:1.6rem;gap:.6rem;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:.4rem;font:inherit;font-weight:700;text-decoration:none;border-radius:12px;padding:.7rem 1.1rem;border:1.5px solid var(--moss);color:var(--moss);background:transparent;cursor:pointer}
 .btn.primary{background:var(--moss);color:var(--paper)}
+.ver{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem}
+.ver .btn{padding:.5rem .95rem;font-size:.92rem}
+.ver .btn[aria-pressed="true"]{background:var(--moss);color:var(--paper)}
 .btn:disabled{opacity:.5;cursor:not-allowed}
 @media (max-width:760px){.hero{grid-template-columns:1fr}.hero .photo{aspect-ratio:4/3;justify-self:stretch}}
 
@@ -259,18 +262,22 @@ footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft)
 
   <section id="walk" aria-labelledby="walk-h">
     <div class="sec-head"><p class="eyebrow">오늘 걷는 숲 미리 보기</p><h2 id="walk-h">다섯 지점에서 만나는 저지곶자왈</h2>
-      <p class="lede">잣담에서 콩짜개군락·종가시나무까지, 오늘 걸을 숲길을 2분 33초에 담았습니다. 지점 이름을 누르면 그 장면부터 재생돼요.</p></div>
+      <p class="lede">잣담에서 콩짜개군락·종가시나무까지, 오늘 걸을 숲길을 영상으로 담았습니다. 배경음악과 노래 중 골라 보세요. 지점 이름을 누르면 그 장면부터 재생돼요.</p>
+      <div class="ver" role="group" aria-label="영상 버전">
+        <button type="button" class="btn ver-b" aria-pressed="true" data-v="RS9GA7t2GTo" data-k="tb" data-title="저지곶자왈 「빛이 숲을 떠나는 시간」 다섯 지점 미리 보기 (배경음악)">배경음악 · 2:33</button>
+        <button type="button" class="btn ver-b" aria-pressed="false" data-v="cEi1x5BqTTs" data-k="ts" data-title="노래로 걷는 저지곶자왈 「빛이 숲을 떠나는 시간」 (노래 「저지곶자왈」)">♪ 노래 「저지곶자왈」 · 3:24</button>
+      </div></div>
     <div class="watch-grid">
-      <div class="vwrap"><iframe id="yt2" src="https://www.youtube-nocookie.com/embed/RS9GA7t2GTo?enablejsapi=1&amp;rel=0&amp;playsinline=1" title="저지곶자왈 「빛이 숲을 떠나는 시간」 다섯 지점 미리 보기" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="vwrap"><iframe id="yt2" src="https://www.youtube-nocookie.com/embed/RS9GA7t2GTo?enablejsapi=1&amp;rel=0&amp;playsinline=1" title="저지곶자왈 「빛이 숲을 떠나는 시간」 다섯 지점 미리 보기 (배경음악)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
       <nav class="chapters-list" aria-label="미리 보기 영상 지점 바로가기">
         <ol>
-          <li><button type="button" class="seek chap" data-p="yt2" data-t="0"><span class="tm">0:00</span><span><b>처음부터</b> 저지곶자왈</span></button></li>
-          <li><button type="button" class="seek chap" data-p="yt2" data-t="25"><span class="tm">0:25</span><span><b>STOP 1</b> 잣담</span></button></li>
-          <li><button type="button" class="seek chap" data-p="yt2" data-t="39"><span class="tm">0:39</span><span><b>STOP 2</b> 낙엽길</span></button></li>
-          <li><button type="button" class="seek chap" data-p="yt2" data-t="54"><span class="tm">0:54</span><span><b>STOP 3</b> 볏바른궤</span></button></li>
-          <li><button type="button" class="seek chap" data-p="yt2" data-t="70"><span class="tm">1:10</span><span><b>STOP 4</b> 숨골과 자연교량</span></button></li>
-          <li><button type="button" class="seek chap" data-p="yt2" data-t="82"><span class="tm">1:22</span><span><b>STOP 5</b> 콩짜개군락 · 종가시나무</span></button></li>
-          <li><button type="button" class="seek chap" data-p="yt2" data-t="127"><span class="tm">2:07</span><span><b>준비</b> 스마트폰으로 관찰을 남기는 법</span></button></li>
+          <li><button type="button" class="seek chap" data-p="yt2" data-t="0" data-tb="0" data-ts="0"><span class="tm">0:00</span><span><b>처음부터</b> 저지곶자왈</span></button></li>
+          <li><button type="button" class="seek chap" data-p="yt2" data-t="25" data-tb="25" data-ts="18"><span class="tm">0:25</span><span><b>STOP 1</b> 잣담</span></button></li>
+          <li><button type="button" class="seek chap" data-p="yt2" data-t="39" data-tb="39" data-ts="29"><span class="tm">0:39</span><span><b>STOP 2</b> 낙엽길</span></button></li>
+          <li><button type="button" class="seek chap" data-p="yt2" data-t="54" data-tb="54" data-ts="62"><span class="tm">0:54</span><span><b>STOP 3</b> 볏바른궤</span></button></li>
+          <li><button type="button" class="seek chap" data-p="yt2" data-t="70" data-tb="70" data-ts="77"><span class="tm">1:10</span><span><b>STOP 4</b> 숨골과 자연교량</span></button></li>
+          <li><button type="button" class="seek chap" data-p="yt2" data-t="82" data-tb="82" data-ts="83"><span class="tm">1:22</span><span><b>STOP 5</b> 콩짜개군락 · 종가시나무</span></button></li>
+          <li><button type="button" class="seek chap" data-p="yt2" data-t="127" data-tb="127" data-ts="178"><span class="tm">2:07</span><span><b>준비</b> 스마트폰으로 관찰을 남기는 법</span></button></li>
         </ol>
       </nav>
     </div>
@@ -562,6 +569,14 @@ footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--ink-soft)
     const p=players[id]={el,ready:false,sec:el.closest('section')};
     el.addEventListener('load',()=>{p.ready=true;try{el.contentWindow.postMessage(JSON.stringify({event:'listening',id}),'*')}catch(e){}});
   }
+  // 숲 미리 보기: 배경음악 / 노래 버전 바꾸기
+  document.querySelectorAll('.ver-b').forEach(v=>v.addEventListener('click',()=>{
+    if(v.getAttribute('aria-pressed')==='true') return;
+    document.querySelectorAll('.ver-b').forEach(x=>x.setAttribute('aria-pressed',String(x===v)));
+    const p=players.yt2; p.ready=false; p.el.title=v.dataset.title;
+    p.el.src='https://www.youtube-nocookie.com/embed/'+v.dataset.v+'?enablejsapi=1&rel=0&playsinline=1';
+    document.querySelectorAll('#walk .chap').forEach(b=>{const t=Number(b.dataset[v.dataset.k]);b.dataset.t=t;b.querySelector('.tm').textContent=Math.floor(t/60)+':'+String(t%60).padStart(2,'0')});
+  }));
   const cmd=(p,func,args)=>p.el.contentWindow.postMessage(JSON.stringify({event:'command',func,args:args||[]}),'*');
   document.querySelectorAll('.seek').forEach(b=>b.addEventListener('click',()=>{
     const p=players[b.dataset.p||'yt']; if(!p) return;
